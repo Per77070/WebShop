@@ -1,0 +1,18 @@
+body {
+    padding-top: 54px;
+    padding-bottom: 70px;
+  }
+  
+  @media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+      padding-bottom: 70px;
+    }
+  }
+  #wrap{
+    margin-bottom: 70px; 
+    
+  }
+  #reg{
+    margin-top:40px;
+  }
