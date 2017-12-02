@@ -122,20 +122,9 @@ else {
 		
 		}
 		
-		if(isset($_GET['insert_author'])){
+		if(isset($_GET['view_orders'])){
 		
-		include("insert_author.php"); 
-		
-		}
-		
-		if(isset($_GET['view_authors'])){
-		
-		include("view_authors.php"); 
-		
-		}
-		if(isset($_GET['edit_author'])){
-		
-		include("edit_author.php"); 
+		include("view_orders.php"); 
 		
 		}
 		if(isset($_GET['view_customers'])){

@@ -9,16 +9,17 @@
 
 	
 	<tr align="center">
-		<td><h2>View all orders here</h2></td>
+		<td colspan="6"><h2>View all orders here</h2></td>
 	</tr>
 	
 	<tr align="center">
 		<th>#</th>
+		<th>customer</th>
 		<th>Products</th>
 		<th>Quantity</th>
-		<th>Invoice No</th>
-		<th>Order Date</th>
-		<th>Action</th>
+		<th>Invoice No/Date</th>
+		
+		
 	</tr>
 	<?php 
 	
@@ -37,6 +38,7 @@
 		$c_id = $row_order['c_id'];
 		$invoice_no = $row_order['invoice_no'];
 		$order_date = $row_order['order_date'];
+		
 		$i++;
 		
 		$get_pro = "SELECT * FROM products WHERE product_id='$pro_id'";
@@ -57,15 +59,16 @@
 	?>
 	<tr align="center">
 		<td><?php echo $i;?></td>
-		<td><?php echo $c_email; ?></td>
+		<td><?php echo $c_email; ?><br>
+		<a href="index.php?confirm_order=<?php echo $order_id; ?>">Complete Order</a></td>
 		<td>
 		<?php echo $pro_title;?><br>
-		<img src="../admin_area/product_img/<?php echo $pro_image;?>" width="50" height="50" />
+		<img src="product_img/<?php echo $pro_image;?>" width="50" height="50" />
 		</td>
 		<td><?php echo $qty;?></td>
-		<td><?php echo $invoice_no;?></td>
-		<td><?php echo $order_date;?></td>
-		<td><a href="index.php?confirm_order=<?php echo $order_id; ?>">Complete Order</a></td>
+		<td><?php echo $invoice_no;?><br>
+		<?php echo $order_date;?></td>
+		
 	
 	</tr>
 	<?php } ?>
