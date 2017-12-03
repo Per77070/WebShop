@@ -1,4 +1,5 @@
 <?php 
+include("includes/db.inc.php");
 session_start(); 
 
 if(!isset($_SESSION['user_email'])){
@@ -132,6 +133,11 @@ else {
 		include("view_customers.php"); 
 		
 		}
+		if(isset($_GET['view_payments'])){
+		
+		include("view_payments.php"); 
+		
+		}
 		
 		?>
 
@@ -154,4 +160,23 @@ else {
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<?php } ?>
+<?php } 
+if(isset($_GET['confirm_order'])){
+	
+	$get_id = $_GET['confirm_order'];
+	
+	$status = 'Complete';
+
+	$update_order="UPDATE orders SET status='$status' WHERE order_id='$get_id'";
+
+	$run_update = mysqli_query($con, $update_order); 
+	
+  
+  
+  if($run_update){
+    echo "<script>alert('Order was updated')</script>";
+    echo "<script>window.open('index.php?view_orders','_self')</script>";
+  }
+
+}
+?>

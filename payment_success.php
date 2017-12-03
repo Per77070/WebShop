@@ -34,6 +34,7 @@ session_start();
             $run_pro_price = mysqli_query($con, $pro_price);
             
             while ($pp_price = mysqli_fetch_array($run_pro_price)) {
+
                 $product_price = array($pp_price['product_price']);
             
                 $product_id = $pp_price['product_id'];
@@ -109,17 +110,14 @@ session_start();
             echo "<h2>Your Payment has failed</h2><br>";
             echo "<a href='https://applikationsutveckling.000webhostapp.com'>Go to Back to shop</a>";
         }
-        
-        
-        
-        $header = "From: applikationsutveckling@gmail.com\r\n";
-        $header.= "MIME-Version: 1.0\r\n";
-        $header.= "Content-Type: text/plain; charset=utf-8\r\n";
-            
-            $subject = "Order confirmation";
-            $message =
+          
+$headers = "Content-Type: text/plain; charset=utf-8\r\n";
+$headers.= "MIME-Version: 1.0\r\n";
+$headers.= "From: applikationsutveckling@gmail.com"."\r\n"." CC: somebodyelse@example.com";
+    $subject = "Order confirmation";
+    $message =
 "Hej $c_name och tack för att du handlat hos oss!
-			
+    
 Här kommer din orderspecifikation applikationsutveckling.000webhostapp.com
 
 Produkten : $pro_name
@@ -133,10 +131,10 @@ för att gå till din sida
 Välkommen åter
 
 ";
-            
-            mail($c_email, $subject, $message);
-            
-                
+    
+    mail($c_email, $subject, $message, $headers);
+    
+ 
 
 ?>
 </body>

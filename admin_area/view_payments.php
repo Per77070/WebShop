@@ -12,18 +12,18 @@ else { ?>
 		<td colspan="6"><h2>View all payments here</h2></td>
 	</tr>
 	
-	<tr align="center" bgcolor="skyblue">
+	<tr align="center">
 		<th>#</th>
 		<th>Customer Email</th>
 		<th>Product</th>
 		<th>Paid Amount</th>
-		<th>Transaction ID</th>
+		<th>Transaction</th>
 		<th>Payment Date</th>
 	</tr>
 	<?php 
 	
 	
-	$get_payment = "select * from payments";
+	$get_payment = "SELECT * FROM payments";
 	
 	$run_payment = mysqli_query($con, $get_payment); 
 	
@@ -39,15 +39,15 @@ else { ?>
 		
 		$i++;
 		
-		$get_pro = "select * from products where product_id='$pro_id'";
+		$get_pro = "SELECT * FROM products WHERE product_id='$pro_id'";
 		$run_pro = mysqli_query($con, $get_pro); 
 		
 		$row_pro=mysqli_fetch_array($run_pro); 
 		
-		$pro_image = $row_pro['product_image']; 
+		$pro_image = $row_pro['product_img']; 
 		$pro_title = $row_pro['product_title'];
 		
-		$get_c = "select * from customers where customer_id='$c_id'";
+		$get_c = "SELECT * FROM customer WHERE customer_id='$c_id'";
 		$run_c = mysqli_query($con, $get_c); 
 		
 		$row_c=mysqli_fetch_array($run_c); 
@@ -60,11 +60,12 @@ else { ?>
 		<td><?php echo $c_email; ?></td>
 		<td>
 		<?php echo $pro_title;?><br>
-		<img src="../admin_area/product_images/<?php echo $pro_image;?>" width="50" height="50" />
+		<img src="product_img/<?php echo $pro_image;?>" width="50" height="50" />
 		</td>
 		<td><?php echo $amount;?></td>
 		<td><?php echo $trx_id;?></td>
 		<td><?php echo $payment_date;?></td>
+		
 	
 	</tr>
 	<?php } ?>
